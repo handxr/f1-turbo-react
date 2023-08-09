@@ -10,13 +10,19 @@ export function useGetDrivers() {
     (async () => {
       try {
         const drivers = await fetchDriversApi();
-        setDrivers(drivers.MRData.DriverTable.Drivers);
+        setDrivers(drivers);
       } catch (error) {
         setIsError(true);
       } finally {
         setIsLoading(false);
       }
     })();
+
+    return () => {
+      setDrivers([]);
+      setIsLoading(true);
+      setIsError(false);
+    };
   }, []);
 
   return {

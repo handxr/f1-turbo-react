@@ -11,12 +11,18 @@ export function useGetDriver(driverId: string) {
       setIsLoading(true);
       try {
         const response = await fetchDriverApi(driverId);
-        setDriver(response.MRData.DriverTable.Drivers[0]);
+        setDriver(response);
       } catch (error) {
         setIsError(true);
       }
       setIsLoading(false);
     })();
+
+    return () => {
+      setDriver(null);
+      setIsLoading(false);
+      setIsError(false);
+    };
   }, [driverId]);
 
   return {
