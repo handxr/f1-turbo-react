@@ -1,4 +1,6 @@
-export async function fetchDriversApi() {
+import { type Driver } from "drivers/domain";
+
+export async function fetchDriversApi(): Promise<Driver[]> {
   const cacheKey = "drivers";
   const cachedData = sessionStorage.getItem(cacheKey);
   if (cachedData) {
@@ -17,7 +19,7 @@ export async function fetchDriversApi() {
   }
 }
 
-export async function fetchDriverApi(driverId: string) {
+export async function fetchDriverApi(driverId: string): Promise<Driver | null> {
   const cacheKey = `driver-${driverId}`;
   const cachedData = sessionStorage.getItem(cacheKey);
   if (cachedData) {

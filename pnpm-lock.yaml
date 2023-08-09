@@ -46,6 +46,9 @@ importers:
       date-fns:
         specifier: ^2.30.0
         version: 2.30.0
+      drivers:
+        specifier: workspace:*
+        version: link:../../packages/drivers
       lucide-react:
         specifier: 0.265.0
         version: 0.265.0(react@18.2.0)
@@ -113,6 +116,12 @@ importers:
       vite:
         specifier: 4.4.5
         version: 4.4.5(@types/node@20.4.9)
+
+  packages/drivers:
+    devDependencies:
+      tsconfig:
+        specifier: workspace:*
+        version: link:../tsconfig
 
   packages/eslint-config-custom:
     dependencies:

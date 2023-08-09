@@ -1,8 +1,9 @@
 import React from "react";
 import { fetchDriversApi } from "..";
+import { type Driver } from "drivers/domain";
 
 export function useGetDrivers() {
-  const [drivers, setDrivers] = React.useState([]);
+  const [drivers, setDrivers] = React.useState<Driver[]>([]);
   const [isLoading, setIsLoading] = React.useState(true);
   const [isError, setIsError] = React.useState(false);
 

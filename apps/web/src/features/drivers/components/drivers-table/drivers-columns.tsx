@@ -13,17 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { DataTableColumnHeader } from "@/components/data-table/data-table-column-header";
-
-export type Driver = {
-  driverId: string;
-  permanentNumber: string;
-  code: string;
-  url: string;
-  givenName: string;
-  familyName: string;
-  dateOfBirth: string;
-  nationality: string;
-};
+import { type Driver } from "drivers/domain";
 
 export const driversColumns: ColumnDef<Driver>[] = [
   {
