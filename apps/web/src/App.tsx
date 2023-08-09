@@ -1,9 +1,10 @@
-import { Button } from "./components/ui/button";
+import { AppProvider } from "./providers/app.provider";
+import { AppRoutes } from "./routes";
 
 export default function App() {
   return (
-    <Button onClick={() => globalThis.window.alert("Hello world!")}>
-      Click me
-    </Button>
+    <AppProvider>
+      <AppRoutes />
+    </AppProvider>
   );
 }
