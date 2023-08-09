@@ -1,4 +1,5 @@
 import { ColumnDef } from "@tanstack/react-table";
+import { format } from "date-fns";
 
 export type Driver = {
   driverId: string;
@@ -27,5 +28,17 @@ export const columns: ColumnDef<Driver>[] = [
   {
     accessorKey: "familyName",
     header: "Family Name",
+  },
+  {
+    accessorKey: "dateOfBirth",
+    header: () => <div className="text-right">Date of Birth</div>,
+    cell: ({ row }) => {
+      const formattedDate = format(
+        new Date(row.getValue("dateOfBirth")),
+        "dd/MM/yyyy"
+      );
+
+      return <div className="text-right">{formattedDate}</div>;
+    },
   },
 ];
