@@ -22,16 +22,16 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { Input } from "@/components/ui/input";
 import { DataTablePagination } from "@/components/data-table/data-table-pagination";
 import { DataTableViewOptions } from "@/components/data-table/data-table-view-options";
+import { DataTableSearchInput } from "../../../../components/data-table/data-table-search-input";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
 }
 
-export function DataTable<TData, TValue>({
+export function DriversTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
@@ -66,15 +66,10 @@ export function DataTable<TData, TValue>({
   return (
     <div>
       <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter drivers..."
-          value={
-            (table.getColumn("givenName")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("givenName")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
+        <DataTableSearchInput
+          table={table}
+          placeholder="Search for a driver by name"
+          value="givenName"
         />
         <DataTableViewOptions table={table} />
       </div>

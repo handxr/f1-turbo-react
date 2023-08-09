@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { ColumnDef } from "@tanstack/react-table";
 import { format } from "date-fns";
 import { MoreHorizontal } from "lucide-react";
@@ -24,7 +25,7 @@ export type Driver = {
   nationality: string;
 };
 
-export const columns: ColumnDef<Driver>[] = [
+export const driversColumns: ColumnDef<Driver>[] = [
   {
     id: "select",
     header: ({ table }) => (
@@ -97,7 +98,14 @@ export const columns: ColumnDef<Driver>[] = [
               Copy Driver Code
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>View driver details</DropdownMenuItem>
+            <DropdownMenuItem>
+              <Link
+                to={`/drivers/${driver.driverId}`}
+                className="block w-full text-left"
+              >
+                View Driver
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
