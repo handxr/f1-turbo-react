@@ -1,6 +1,7 @@
 import React from "react";
-import { fetchDriverApi } from "..";
-import { Driver } from "drivers";
+
+import { Driver } from "drivers/domain";
+import { driversService } from "drivers/infrastructure";
 
 export function useGetDriver(driverId: string) {
   const [driver, setDriver] = React.useState<Driver | null>(null);
@@ -11,7 +12,7 @@ export function useGetDriver(driverId: string) {
     (async () => {
       setIsLoading(true);
       try {
-        const response = await fetchDriverApi(driverId);
+        const response = await driversService.findById(driverId);
         setDriver(response);
       } catch (error) {
         setIsError(true);

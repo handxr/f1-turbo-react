@@ -1,6 +1,7 @@
 import React from "react";
-import { fetchDriversApi } from "..";
+
 import { type Driver } from "drivers/domain";
+import { driversService } from "drivers/infrastructure";
 
 export function useGetDrivers() {
   const [drivers, setDrivers] = React.useState<Driver[]>([]);
@@ -10,7 +11,7 @@ export function useGetDrivers() {
   React.useEffect(() => {
     (async () => {
       try {
-        const drivers = await fetchDriversApi();
+        const drivers = await driversService.findAll();
         setDrivers(drivers);
       } catch (error) {
         setIsError(true);
