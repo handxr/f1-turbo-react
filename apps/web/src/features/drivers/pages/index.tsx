@@ -14,6 +14,8 @@ export const HomePage = () => {
     return <div>Something went wrong...</div>;
   }
 
+  if (!drivers) return null;
+
   return (
     <React.Fragment>
       <Head title="F1 Drivers Home Page" />

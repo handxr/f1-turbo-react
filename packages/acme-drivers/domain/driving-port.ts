@@ -1,6 +1,6 @@
 import { Driver } from "./driver";
 
-export type DrivenPort = {
-  findAll(): Promise<Driver[]>;
+export type DrivingPort = {
+  findAll(year: string): Promise<Driver[]>;
   findById(id: string): Promise<Driver>;
 };

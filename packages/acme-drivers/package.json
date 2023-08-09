@@ -1,5 +1,5 @@
 {
-  "name": "drivers",
+  "name": "acme-drivers",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",

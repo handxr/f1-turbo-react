@@ -1,35 +1,23 @@
+import { driversAdapter } from "acme-drivers/infrastructure";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
-import { type Driver } from "drivers/domain";
-import { driversService } from "drivers/infrastructure";
-
 export function useGetDrivers() {
-  const [drivers, setDrivers] = React.useState<Driver[]>([]);
-  const [isLoading, setIsLoading] = React.useState(true);
-  const [isError, setIsError] = React.useState(false);
-
-  React.useEffect(() => {
-    (async () => {
-      try {
-        const drivers = await driversService.findAll();
-        setDrivers(drivers);
-      } catch (error) {
-        setIsError(true);
-      } finally {
-        setIsLoading(false);
-      }
-    })();
-
-    return () => {
-      setDrivers([]);
-      setIsLoading(true);
-      setIsError(false);
-    };
-  }, []);
+  const [selectedYear, setSelectedYear] = React.useState<string>("2023");
+  const {
+    data: drivers,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["drivers"],
+    queryFn: () => driversAdapter.findAll(selectedYear),
+  });
 
   return {
     drivers,
     isLoading,
     isError,
+    selectedYear,
+    setSelectedYear,
   };
 }

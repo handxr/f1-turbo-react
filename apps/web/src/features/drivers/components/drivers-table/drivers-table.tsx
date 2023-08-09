@@ -73,7 +73,7 @@ export function DriversTable<TData, TValue>({
         />
         <DataTableViewOptions table={table} />
       </div>
-      <div className="rounded-md border">
+      <div className="border rounded-md">
         <Table>
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
