@@ -65,8 +65,8 @@ export function DriversTable<TData, TValue>({
   });
 
   return (
-    <div>
-      <div className="flex items-center py-4">
+    <React.Fragment>
+      <div className="flex items-center gap-4 py-4">
         <DataTableSearchInput
           table={table}
           placeholder="Search for a driver by name"
@@ -131,6 +131,6 @@ export function DriversTable<TData, TValue>({
       </div>
 
       <DataTablePagination table={table} />
-    </div>
+    </React.Fragment>
   );
 }
