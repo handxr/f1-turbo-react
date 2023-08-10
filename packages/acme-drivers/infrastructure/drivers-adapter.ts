@@ -8,7 +8,7 @@ export class DriversAdapter {
     return await this.driversService.findAll(year);
   }
 
-  public async findById(id: string): Promise<Driver> {
-    return await this.driversService.findById(id);
+  public async findById(id: string, year: string): Promise<Driver> {
+    return await this.driversService.findById(id, year);
   }
 }

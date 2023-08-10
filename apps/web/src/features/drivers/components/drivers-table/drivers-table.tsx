@@ -25,6 +25,7 @@ import {
 import { DataTablePagination } from "@/components/data-table/data-table-pagination";
 import { DataTableViewOptions } from "@/components/data-table/data-table-view-options";
 import { DataTableSearchInput } from "../../../../components/data-table/data-table-search-input";
+import { SelectYear } from "@/components/select-year";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -71,6 +72,7 @@ export function DriversTable<TData, TValue>({
           placeholder="Search for a driver by name"
           value="givenName"
         />
+        <SelectYear />
         <DataTableViewOptions table={table} />
       </div>
       <div className="border rounded-md">

@@ -40,6 +40,18 @@ export const driversColumns: ColumnDef<Driver>[] = [
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Number" />
     ),
+    cell: ({ row }) => {
+      const driver = row.original;
+
+      return (
+        <div className="flex items-center space-x-2">
+          <div className="flex items-center justify-center w-6 h-6 text-xs font-bold text-white bg-gray-500 rounded-full">
+            {driver.permanentNumber || "-"}
+          </div>
+          <div>{driver.code}</div>
+        </div>
+      );
+    },
   },
   {
     accessorKey: "code",

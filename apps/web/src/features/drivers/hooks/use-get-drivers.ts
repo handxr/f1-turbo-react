@@ -1,23 +1,22 @@
 import { driversAdapter } from "acme-drivers/infrastructure";
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+
+import { useYearStore } from "@/stores/year.store";
 
 export function useGetDrivers() {
-  const [selectedYear, setSelectedYear] = React.useState<string>("2023");
+  const { year } = useYearStore();
   const {
     data: drivers,
     isLoading,
     isError,
   } = useQuery({
-    queryKey: ["drivers"],
-    queryFn: () => driversAdapter.findAll(selectedYear),
+    queryKey: ["drivers", year],
+    queryFn: () => driversAdapter.findAll(year.toString()),
   });
 
   return {
     drivers,
     isLoading,
     isError,
-    selectedYear,
-    setSelectedYear,
   };
 }
